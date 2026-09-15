@@ -96,7 +96,6 @@ def train(
 
     return pipeline, metrics
 
-
 def _parse_args():
     parser = argparse.ArgumentParser(description="Treina o modelo de preco de imoveis.")
     parser.add_argument("--data", type=str, default=str(PROCESSED_DATA_PATH))
@@ -104,7 +103,6 @@ def _parse_args():
     parser.add_argument("--max-depth", type=int, default=12)
     parser.add_argument("--test-size", type=float, default=0.2)
     return parser.parse_args()
-
 
 if __name__ == "__main__":
     args = _parse_args()

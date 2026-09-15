@@ -1,10 +1,10 @@
 ---
-name: ML_lifecicle_1
-description: Estrutura um projeto completo de ciclo de vida de ML a partir de um dataset tabular — ciência de dados (limpeza/EDA), pipeline de treino em sklearn, API Flask de serving, testes automatizados e CI/CD no GitHub Actions. Use quando o usuário pedir para montar/estruturar um projeto de ML do zero, "ciclo de vida de ML", "pipeline de dados até API", ou mencionar explicitamente esta skill (ML_lifecicle_1).
+name: ml-lifecicle-1
+description: Estrutura um projeto completo de ciclo de vida de ML a partir de um dataset tabular — ciência de dados (limpeza/EDA), pipeline de treino em sklearn, API Flask de serving, testes automatizados e CI/CD no GitHub Actions. Use quando o usuário pedir para montar/estruturar um projeto de ML do zero, "ciclo de vida de ML", "pipeline de dados até API", ou mencionar explicitamente esta skill (ml-lifecicle-1).
 user-invocable: true
 ---
 
-# ML_lifecicle_1 — Ciclo de vida de ML completo (dados → modelo → API → CI)
+# ml-lifecicle-1 — Ciclo de vida de ML completo (dados → modelo → API → CI)
 
 Playbook para montar, a partir de um dataset tabular, um projeto de estudo de
 ML de ponta a ponta: limpeza de dados, EDA, pipeline de features/treino,
