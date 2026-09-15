@@ -1,0 +1,55 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# --- Ambientes virtuais ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Ferramentas de qualidade / cache ---
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Variaveis de ambiente / segredos ---
+.env
+.env.*
+*.pem
+
+# --- Dados (Machine Learning) ---
+# Dados brutos e processados nao entram no Git: sao grandes, mutaveis e
+# reproduziveis a partir do script de download (veja house-prices-ml/README.md).
+# A amostra pequena em data/sample/ E versionada (usada por testes/CI).
+house-prices-ml/data/raw/*
+!house-prices-ml/data/raw/.gitkeep
+house-prices-ml/data/processed/*
+!house-prices-ml/data/processed/.gitkeep
+
+# --- Modelos e artefatos treinados ---
+# Artefatos binarios de modelo nao vao para o Git (seriam re-treinados via CI/CD).
+house-prices-ml/models/*
+!house-prices-ml/models/.gitkeep
+
+# --- Sistema operacional / editores ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
