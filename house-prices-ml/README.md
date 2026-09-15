@@ -160,17 +160,36 @@ flask --app house_prices.api.app run --debug
 A API sobe em `http://127.0.0.1:5000`. Ver `docs/api.md` para o contrato completo
 e exemplos de `curl`. Resumo rápido:
 
+Git Bash / Linux / macOS (`curl` de verdade):
+
 ```bash
 curl http://127.0.0.1:5000/health
 
 curl -X POST http://127.0.0.1:5000/predict \
   -H "Content-Type: application/json" \
   -d '{
-    "bedrooms": 3, "bathrooms": 2.0, "sqft_living": 1800, "sqft_lot": 5000,
-    "floors": 1.0, "waterfront": "N", "view": 0, "condition": "Average",
-    "grade": 7, "sqft_above": 1800, "sqft_basement": 0, "yr_built": 1990,
-    "yr_renovated": 0, "zipcode": 98115, "lat": 47.68, "long": -122.29,
-    "sqft_living15": 1800, "sqft_lot15": 5000, "sale_year": 2015
+    "bedrooms": 4, "bathrooms": 2.5, "sqft_living": 2400, "sqft_lot": 6000,
+    "floors": 2.0, "waterfront": "N", "view": 0, "condition": "Good",
+    "grade": 8, "sqft_above": 2400, "sqft_basement": 0, "yr_built": 2005,
+    "yr_renovated": 0, "zipcode": 98052, "lat": 47.65, "long": -122.14,
+    "sqft_living15": 2200, "sqft_lot15": 6200, "sale_year": 2015
+  }'
+```
+
+PowerShell (`curl` é um alias de `Invoke-WebRequest`, que usa parâmetros diferentes do curl real):
+
+```powershell
+Invoke-WebRequest -Uri "http://127.0.0.1:5000/health"
+
+Invoke-WebRequest -Uri "http://127.0.0.1:5000/predict" `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body '{
+    "bedrooms": 4, "bathrooms": 2.5, "sqft_living": 2400, "sqft_lot": 6000,
+    "floors": 2.0, "waterfront": "N", "view": 0, "condition": "Good",
+    "grade": 8, "sqft_above": 2400, "sqft_basement": 0, "yr_built": 2005,
+    "yr_renovated": 0, "zipcode": 98052, "lat": 47.65, "long": -122.14,
+    "sqft_living15": 2200, "sqft_lot15": 6200, "sale_year": 2015
   }'
 ```
 
