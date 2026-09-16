@@ -9,22 +9,42 @@
 name: CI - house-prices-ml
 
 # Quando o workflow deve rodar.
+#
+# GOVERNANCA: o CI so dispara se o push/PR tocar em algo que realmente
+# pode quebrar o modelo, os testes ou a API (as partes "criticas" do
+# projeto). Mudar so um notebook, o README ou a documentacao NAO dispara
+# o CI - essa lista de "paths" abaixo E a lista do que conta como critico.
+# Pra saber antecipadamente se um PR vai rodar o CI, basta comparar os
+# arquivos alterados (aba "Files changed" do PR, ou "git diff --name-only")
+# com os padroes listados aqui.
 on:
-  # A cada push na main...
   push:
     branches: [main]
-    # ...mas so se algo dentro de house-prices-ml/ ou o proprio workflow mudou.
-    # Isso evita rodar CI do house-prices-ml por causa de mudanca em outro projeto do repo.
     paths:
-      - "house-prices-ml/**"
+      # Codigo fonte do pacote: modelo/treino (train.py), limpeza de dados
+      # (data/clean.py), feature engineering (features.py) e API (api/*).
+      - "house-prices-ml/src/house_prices/**"
+      # Testes automatizados.
+      - "house-prices-ml/tests/**"
+      # Dependencias/config do projeto (mudar uma dependencia pode quebrar
+      # lint, testes ou treino).
+      - "house-prices-ml/pyproject.toml"
+      # Amostra de dados usada pelo job de smoke test de treino.
+      - "house-prices-ml/data/sample/**"
+      # O proprio workflow (se a esteira de CI mudar, ela precisa ser testada).
       - ".github/workflows/ci.yml"
   # Mesma logica, mas para Pull Requests direcionados a main.
   pull_request:
     branches: [main]
     paths:
-      - "house-prices-ml/**"
+      - "house-prices-ml/src/house_prices/**"
+      - "house-prices-ml/tests/**"
+      - "house-prices-ml/pyproject.toml"
+      - "house-prices-ml/data/sample/**"
       - ".github/workflows/ci.yml"
-  # Permite rodar manualmente pela aba "Actions" do GitHub (botao "Run workflow").
+  # Permite rodar manualmente pela aba "Actions" do GitHub (botao "Run workflow"),
+  # ignorando os filtros de path acima - util pra forcar uma rodada mesmo
+  # quando so a documentacao/notebooks mudaram.
   workflow_dispatch:
 
 # Todos os "run" dos jobs abaixo vao executar dentro dessa pasta por padrao,
